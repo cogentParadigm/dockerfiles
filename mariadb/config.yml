@@ -1,0 +1,3 @@
+---
+mariadb_enabled: true
+mariadb_root_password: root

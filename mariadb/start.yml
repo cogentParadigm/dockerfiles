@@ -1,0 +1,4 @@
+---
+- shell: mysqld &
+  become: true
+  become_user: mysql
