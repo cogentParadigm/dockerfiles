@@ -19,4 +19,4 @@ ADD mongooseim.cfg /opt/MongooseIM/_build/prod/rel/mongooseim/etc/mongooseim.cfg
 
 EXPOSE 5280 5285 8089
 
-CMD ["mongooseimctl", "foreground"]
+CMD ["/opt/MongooseIM/_build/prod/rel/mongooseim/bin/mongooseimctl", "foreground"]
