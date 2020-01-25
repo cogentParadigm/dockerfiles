@@ -14,8 +14,6 @@ ADD src/event_pusher/mod_event_pusher_http.erl /opt/MongooseIM/src/event_pusher/
 ADD src/event_pusher/mod_event_pusher_http_offline.erl /opt/MongooseIM/src/event_pusher/mod_event_pusher_http_offline.erl
 RUN ./rebar3 compile && \
     make rel
-ADD mongooseim.cfg /opt/MongooseIM/_build/prod/rel/mongooseim/etc/mongooseim.cfg
-# database
 
 EXPOSE 5280 5285 8089
 
