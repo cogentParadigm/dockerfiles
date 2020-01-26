@@ -12,8 +12,6 @@ RUN git fetch && \
     git checkout d0ce8fa
 ADD config.yml /opt/src/ansible-playbook/config.yml
 RUN ansible-playbook -i inventory main.yml
-ADD server.key /etc/pki/tls/private/localhost.key
-ADD server.crt /etc/pki/tls/certs/localhost.crt
 ADD php.conf /etc/httpd/conf.d/php.conf
 
 WORKDIR /var/www/html

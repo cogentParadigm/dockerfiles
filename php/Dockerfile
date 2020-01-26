@@ -13,8 +13,11 @@ RUN git fetch && \
 ADD config.yml /opt/src/ansible-playbook/config.yml
 RUN ansible-playbook -i inventory main.yml && \
     mkdir /run/php-fpm
-RUN sed -i 's/^listen = .*/listen = 9000/' /etc/php-fpm.d/www.conf
+RUN sed -i 's/^listen = .*/listen = \/var\/run\/php-fpm\/default.sock/' /etc/php-fpm.d/www.conf
 RUN sed -i 's/^listen.allowed_clients =/;listen.allowed_clients =/' /etc/php-fpm.d/www.conf
+RUN sed -i 's/^;listen.owner = .*/listen.owner = apache/' /etc/php-fpm.d/www.conf
+RUN sed -i 's/^;listen.group = .*/listen.group = apache/' /etc/php-fpm.d/www.conf
+RUN echo "xdebug.remote_host=host.docker.internal" >> /etc/php.ini
 
 WORKDIR /var/www/html
 
