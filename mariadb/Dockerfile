@@ -9,7 +9,7 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 RUN git clone https://github.com/cogentParadigm/ansible-playbook-development.git /opt/src/ansible-playbook
 WORKDIR /opt/src/ansible-playbook
 RUN git fetch && \
-    git checkout 0a6165d
+    git checkout ab4e43a6104bb088bc89ecc6b2dd9d832cede7eb
 ADD start.yml /opt/src/ansible-playbook/roles/mariadb/tasks/start.yml
 ADD config.yml /opt/src/ansible-playbook/config.yml
 RUN ansible-playbook -i inventory main.yml && \
