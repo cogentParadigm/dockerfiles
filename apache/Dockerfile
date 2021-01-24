@@ -13,6 +13,9 @@ RUN git fetch && \
 ADD config.yml /opt/src/ansible-playbook/config.yml
 RUN ansible-playbook -i inventory main.yml
 ADD php.conf /etc/httpd/conf.d/php.conf
+RUN sed -i 's/^ErrorLog .*/ErrorLog |\/usr\/bin\/cat/' /etc/httpd/conf.d/ssl.conf
+RUN sed -i 's/^TransferLog .*/TransferLog |\/usr\/bin\/cat/' /etc/httpd/conf.d/ssl.conf
+RUN sed -i 's/^CustomLog .*/CustomLog |\/usr\/bin\/cat \\/' /etc/httpd/conf.d/ssl.conf
 
 WORKDIR /var/www/html
 
