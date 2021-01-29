@@ -8,8 +8,10 @@
 ### Create cert DB and import CA
 ###
 
-mkdir -p ~/.pki/nssdb
-certutil -d sql:$HOME/.pki/nssdb -N --empty-password
+if [ ! -d $HOME/.pki/nssdb ]; then
+  mkdir -p $HOME/.pki/nssdb
+  certutil -d sql:$HOME/.pki/nssdb -N --empty-password
+fi
 certutil -d sql:$HOME/.pki/nssdb -A -t TC -n "${CA_NAME}" -i ${CA_FILE}
 
 ###
