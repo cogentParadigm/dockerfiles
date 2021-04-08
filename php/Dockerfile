@@ -11,7 +11,7 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 RUN git clone https://github.com/cogentParadigm/ansible-playbook-development.git /opt/src/ansible-playbook
 WORKDIR /opt/src/ansible-playbook
 RUN git fetch && \
-    git checkout v0.8.3
+    git checkout v0.8.4
 ADD config.yml /opt/src/ansible-playbook/config.yml
 RUN sed -i "s/^php_version:.*/php_version: \\\"$PHP_VERSION\\\"/" config.yml
 RUN ansible-playbook -i inventory main.yml && \
